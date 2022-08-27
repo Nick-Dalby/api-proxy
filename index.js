@@ -9,7 +9,7 @@ const football = require('./football')
 
 app.use(express.json())
 
-const allowedOrigins = ['https://did-leeds-win.netlify.app/']
+const allowedOrigins = ['https://did-leeds-win.netlify.app']
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
