@@ -9,7 +9,7 @@ const football = require('./football')
 
 app.use(express.json())
 
-const allowedOrigins = ['http://127.0.0.1', 'http://127.0.0.1:5501']
+const allowedOrigins = ['https://did-leeds-win.netlify.app/']
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
@@ -21,8 +21,8 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 }
 
-// app.use(cors(corsOptions))
-app.use(cors())
+app.use(cors(corsOptions))
+// app.use(cors())
 
 // rate limiter
 const limiter = rateLimit({
