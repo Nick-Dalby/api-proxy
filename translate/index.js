@@ -3,6 +3,9 @@ const express = require('express')
 const router = express.Router()
 const fetch = require('node-fetch')
 
+const rateLimit = require('express-rate-limit')
+
+
 const translate = async (text, lang) => {
   const url = `http://api-free.deepl.com/v2/translate?text=${text}&target_lang=${lang}`
 
@@ -20,11 +23,16 @@ const translate = async (text, lang) => {
   }
 }
 
+const limiter = rateLimit({
+  windowMs: 1000 * 60,
+  max: 5,
+})
+
 router.get('/', (req, res) => {
   res.json({ success: 'translate' })
 })
 
-router.get('/:text/:lang', async (req, res) => {
+router.get('/:text/:lang', limiter, async (req, res) => {
   const { text, lang } = req.params
   const data = await translate(text, lang)
   res.json(data)
