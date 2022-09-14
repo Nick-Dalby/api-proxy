@@ -1,4 +1,5 @@
 const express = require('express')
+
 const router = express.Router()
 const fetch = require('node-fetch')
 
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:team', async (req, res) => {
-  const team = req.params.team
+  const { team } = req.params
   const data = await fetchFootball(team)
   res.json(data)
 })

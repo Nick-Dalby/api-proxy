@@ -1,4 +1,5 @@
 const express = require('express')
+
 const router = express.Router()
 const fetch = require('node-fetch')
 
@@ -24,8 +25,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:text/:lang', async (req, res) => {
-  const text = req.params.text
-  const lang = req.params.lang
+  const { text, lang } = req.params
   const data = await translate(text, lang)
   res.json(data)
 })
