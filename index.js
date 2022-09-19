@@ -8,12 +8,15 @@ const port = 3000
 
 const football = require('./football')
 const translate = require('./translate')
+const tweets = require('./tweets')
 
 app.use(express.json())
 
 const allowedOrigins = [
   'http://127.0.0.1:5500',
   'https://did-leeds-win.netlify.app',
+  'https://zesty-moxie-726a47.netlify.app/',
+  'https://nickdalby.com/',
 ]
 const corsOptions = {
   origin: (origin, callback) => {
@@ -26,8 +29,8 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 }
 
-// app.use(cors(corsOptions))
-app.use(cors())
+app.use(cors(corsOptions))
+// app.use(cors())
 
 // rate limiter
 const limiter = rateLimit({
@@ -45,5 +48,8 @@ app.use('/football', football)
 
 // deepl route
 app.use('/translate', translate)
+
+// twitter route
+app.use('/tweets', tweets)
 
 app.listen(port, () => console.log(`app listening on port ${port}`))
