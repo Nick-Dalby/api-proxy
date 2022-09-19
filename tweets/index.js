@@ -6,7 +6,7 @@ const fetch = require('node-fetch')
 // amount can be between 5 and 100
 
 const getTweets = async (userId, amount) => {
-  const url = `https://api.twitter.com/2/users/${userId}/tweets?exclude=replies&max_results=${amount}&expansions=attachments.media_keys&media.fields=url`
+  const url = `https://api.twitter.com/2/users/${userId}/tweets?exclude=replies&max_results=${amount}&tweet.fields=created_at`
 
   const response = await fetch(url, {
     headers: { authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}` },
