@@ -11,6 +11,7 @@ nodeJs / express API proxy deployed to Vercel
 **Tech used:** NodeJs, Express, CORS, Dotenv, express-rate-limit, node-fetch
 
 NodeJs app to hide API keys, implement rate limiting, set up cacheing...
+
 Features:
 
 - async await
